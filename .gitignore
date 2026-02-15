@@ -1,0 +1,17 @@
+# IDE
+.vscode/
+.idea/
+
+# System
+Thumbs.db
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Gemini
+.gemini/
