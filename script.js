@@ -414,4 +414,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
+  // ═══════════════════════════════════════════════
+  // SMART MOBILE HIGHLIGHT (Advantages)
+  // ═══════════════════════════════════════════════
+  (() => {
+    if (window.innerWidth > 480) return;
+
+    const cards = document.querySelectorAll('.advantage-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, {
+      threshold: 0.9,
+      rootMargin: "0px"
+    });
+
+    cards.forEach(card => observer.observe(card));
+  })();
+
 });

@@ -1691,4 +1691,25 @@ button {
     .cta__title {
         font-size: var(--font-size-2xl);
     }
+
+    /* Mobile Scroll Highlight for Advantages */
+    .advantage-card.active {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(196, 30, 36, 0.15);
+        border-color: transparent;
+        background: var(--color-white);
+    }
+
+    .advantage-card.active::before {
+        transform: scaleX(1);
+    }
+
+    .advantage-card.active .advantage-card__icon {
+        background: var(--color-primary);
+        transform: scale(1.1);
+    }
+
+    .advantage-card.active .advantage-card__icon img {
+        filter: brightness(0) invert(1);
+    }
 }
