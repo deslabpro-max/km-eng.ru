@@ -79,10 +79,12 @@ html {
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 body {
     font-family: var(--font-family);
+    overflow-x: hidden;
     font-weight: 400;
     line-height: 1.6;
     color: var(--color-text);
@@ -1118,8 +1120,11 @@ button {
     width: max-content;
 }
 
-.partners__track:hover {
-    animation-play-state: paused;
+/* Only pause on desktop (mouse), not on mobile touch */
+@media (hover: hover) and (pointer: fine) {
+    .partners__track:hover {
+        animation-play-state: paused;
+    }
 }
 
 @keyframes marquee {
@@ -1495,20 +1500,32 @@ button {
     :root {
         --font-size-4xl: 1.75rem;
         --font-size-3xl: 1.5rem;
-        --header-height: 80px;
+        --header-height: 90px;
     }
 
     /* Prevent header overflow on mobile */
+    .header {
+        overflow: hidden;
+    }
+
     .header__inner {
         max-width: 100%;
+        width: 100%;
         box-sizing: border-box;
         padding: 0 16px;
         gap: 8px;
+        overflow: hidden;
+    }
+
+    .header__logo {
+        flex-shrink: 1;
+        min-width: 0;
     }
 
     .header__logo img {
-        height: 68px;
+        height: 80px;
         width: auto;
+        max-width: calc(100vw - 80px);
     }
 
     .burger {
@@ -1612,7 +1629,7 @@ button {
         --font-size-4xl: 1.5rem;
         --font-size-3xl: 1.25rem;
         --container-padding: 1rem;
-        --header-height: 70px;
+        --header-height: 80px;
     }
 
     .header__inner {
@@ -1620,7 +1637,7 @@ button {
     }
 
     .header__logo img {
-        height: 58px;
+        height: 70px;
     }
 
     .section {
