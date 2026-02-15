@@ -1747,12 +1747,10 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.6;
-    transition: all var(--transition-base);
+    transition: transform var(--transition-base);
 }
 
 .partners__logo:hover {
-    opacity: 1;
     transform: scale(1.1);
 }
 
@@ -1760,12 +1758,7 @@ button {
     height: 50px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    transition: filter var(--transition-base);
-}
-
-.partners__logo:hover img {
-    filter: grayscale(0%);
+    /* Removed grayscale filter */
 }
 
 @keyframes marquee {
