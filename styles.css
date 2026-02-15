@@ -1498,8 +1498,30 @@ button {
         --header-height: 70px;
     }
 
+    /* Fix header: shrink logo, keep burger visible */
+    .header__inner {
+        gap: var(--space-sm);
+        overflow: visible;
+    }
+
+    .header__logo img {
+        height: 50px;
+        width: auto;
+    }
+
+    .burger {
+        flex-shrink: 0;
+        margin-right: 0;
+    }
+
+    /* Push hero below the fixed header */
     .hero {
-        padding-top: calc(var(--header-height) + 12px);
+        padding-top: calc(var(--header-height) + 16px);
+    }
+
+    /* Fixed slider height so all slides are uniform */
+    .hero__slider {
+        height: 500px;
     }
 
     .hero__slide {
@@ -1507,6 +1529,8 @@ button {
         justify-content: flex-start;
         padding: var(--space-md) var(--space-md) var(--space-sm);
         text-align: center;
+        height: 100%;
+        overflow: hidden;
     }
 
     .hero__slide-content {
@@ -1533,18 +1557,13 @@ button {
         right: auto;
         top: auto;
         transform: none;
-        width: 180px;
-        height: 180px;
+        width: 160px;
+        height: 160px;
         margin: var(--space-sm) auto 0;
     }
 
     .hero__slide.active .hero__slide-image {
         transform: none;
-    }
-
-    .hero__slider {
-        height: auto;
-        min-height: 520px;
     }
 
     .hero__dots {
@@ -1580,6 +1599,11 @@ button {
         --font-size-4xl: 1.5rem;
         --font-size-3xl: 1.25rem;
         --container-padding: 1rem;
+        --header-height: 60px;
+    }
+
+    .header__logo img {
+        height: 40px;
     }
 
     .section {
@@ -1597,7 +1621,7 @@ button {
     }
 
     .hero__slider {
-        min-height: 460px;
+        height: 420px;
         border-radius: var(--radius-md);
     }
 
@@ -1615,8 +1639,8 @@ button {
     }
 
     .hero__slide-image {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
     }
 
     .hero__dots {
