@@ -1533,9 +1533,9 @@ button {
         margin-left: auto;
     }
 
-    /* Push hero below the fixed header - massive extra space to ensure visibility */
+    /* Push hero below the fixed header - ADJUSTED for LANDSCAPE (tablets/horizontal mobile) */
     .hero {
-        padding-top: calc(var(--header-height) + 120px);
+        padding-top: calc(var(--header-height) + 50px);
     }
 
     /* Fixed slider height — taller, all slides same size */
@@ -1638,6 +1638,11 @@ button {
 
     .header__logo img {
         height: 70px;
+    }
+
+    /* FORCE Portrait padding - fixes vertical mobile cut-off */
+    .hero {
+        padding-top: calc(var(--header-height) + 130px) !important;
     }
 
     .section {
