@@ -1498,9 +1498,14 @@ button {
         --header-height: 70px;
     }
 
+    .hero {
+        padding-top: calc(var(--header-height) + 12px);
+    }
+
     .hero__slide {
         flex-direction: column;
-        padding: var(--space-xl) var(--space-md);
+        justify-content: flex-start;
+        padding: var(--space-md) var(--space-md) var(--space-sm);
         text-align: center;
     }
 
@@ -1508,14 +1513,29 @@ button {
         max-width: 100%;
     }
 
+    .hero__slide-subtitle {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--space-xs);
+    }
+
+    .hero__slide-title {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--space-xs);
+    }
+
+    .hero__slide-btn {
+        padding: 10px 28px;
+        font-size: var(--font-size-sm);
+    }
+
     .hero__slide-image {
         position: relative;
         right: auto;
         top: auto;
         transform: none;
-        width: 200px;
-        height: 200px;
-        margin: var(--space-md) auto 0;
+        width: 180px;
+        height: 180px;
+        margin: var(--space-sm) auto 0;
     }
 
     .hero__slide.active .hero__slide-image {
@@ -1523,7 +1543,12 @@ button {
     }
 
     .hero__slider {
-        height: 560px;
+        height: auto;
+        min-height: 520px;
+    }
+
+    .hero__dots {
+        margin-top: var(--space-md);
     }
 
     .about__inner {
@@ -1572,12 +1597,17 @@ button {
     }
 
     .hero__slider {
-        min-height: 480px;
+        min-height: 460px;
         border-radius: var(--radius-md);
     }
 
     .hero__slide {
         border-radius: var(--radius-md);
+        padding: var(--space-sm) var(--space-sm) var(--space-xs);
+    }
+
+    .hero__slide-subtitle {
+        font-size: var(--font-size-xs);
     }
 
     .hero__slide-title {
@@ -1585,8 +1615,12 @@ button {
     }
 
     .hero__slide-image {
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
+    }
+
+    .hero__dots {
+        margin-top: var(--space-sm);
     }
 
     .cta__title {
