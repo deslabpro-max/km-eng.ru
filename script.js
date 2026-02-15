@@ -38,16 +38,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = dotsContainer.querySelectorAll('.hero__dot');
 
     function goTo(index) {
-      // Remove active from current
-      slides[current].classList.remove('active');
+      if (index === current) return;
+
+      const outgoing = slides[current];
+      const incoming = slides[index];
+
+      // Flip out the current slide
+      outgoing.classList.add('flip-out');
+      outgoing.classList.remove('active');
       dots[current].classList.remove('active');
 
       // Update index
       current = index;
 
-      // Add active to new
-      slides[current].classList.add('active');
+      // Flip in the new slide
+      incoming.classList.add('active');
       dots[current].classList.add('active');
+
+      // Clean up flip-out after transition
+      setTimeout(() => {
+        outgoing.classList.remove('flip-out');
+      }, 700);
 
       // Progress bar — 4 second timer animation
       if (progressBar) {

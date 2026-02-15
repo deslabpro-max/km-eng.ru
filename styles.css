@@ -499,6 +499,7 @@ button {
     border-radius: var(--radius-lg);
     overflow: hidden;
     height: 480px;
+    perspective: 1200px;
 }
 
 .hero__slide {
@@ -512,8 +513,12 @@ button {
     padding: var(--space-2xl) var(--space-3xl);
     border-radius: var(--radius-lg);
     opacity: 0;
-    transition: opacity var(--transition-slider);
     pointer-events: none;
+    backface-visibility: hidden;
+    transform: rotateY(90deg);
+    transform-origin: left center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero__slide.active {
@@ -522,6 +527,13 @@ button {
     pointer-events: auto;
     z-index: 2;
     height: 100%;
+    transform: rotateY(0deg);
+}
+
+.hero__slide.flip-out {
+    opacity: 0;
+    transform: rotateY(-90deg);
+    transform-origin: right center;
 }
 
 /* Slide 1: Golden/Ochre — Комплексные поставки */
@@ -1498,20 +1510,22 @@ button {
         --header-height: 70px;
     }
 
-    /* Fix header: shrink logo, keep burger visible */
+    /* Fix header: bigger logo, burger always visible */
     .header__inner {
         gap: var(--space-sm);
-        overflow: visible;
+        padding: 0 var(--container-padding);
     }
 
     .header__logo img {
-        height: 50px;
+        height: 75px;
         width: auto;
+        max-width: 180px;
     }
 
     .burger {
         flex-shrink: 0;
-        margin-right: 0;
+        position: relative;
+        right: 0;
     }
 
     /* Push hero below the fixed header */
@@ -1519,36 +1533,47 @@ button {
         padding-top: calc(var(--header-height) + 16px);
     }
 
-    /* Fixed slider height so all slides are uniform */
+    /* Fixed slider height — taller, all slides same size */
     .hero__slider {
-        height: 500px;
+        height: 560px;
     }
 
     .hero__slide {
         flex-direction: column;
         justify-content: flex-start;
-        padding: var(--space-md) var(--space-md) var(--space-sm);
+        align-items: center;
+        padding: var(--space-lg) var(--space-md) var(--space-sm);
         text-align: center;
         height: 100%;
         overflow: hidden;
     }
 
+    /* Consistent layout: fixed-height zones */
     .hero__slide-content {
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .hero__slide-subtitle {
         font-size: var(--font-size-sm);
         margin-bottom: var(--space-xs);
+        min-height: 60px;
+        display: flex;
+        align-items: center;
     }
 
     .hero__slide-title {
         font-size: var(--font-size-3xl);
-        margin-bottom: var(--space-xs);
+        margin-bottom: var(--space-sm);
+        min-height: 72px;
+        display: flex;
+        align-items: center;
     }
 
     .hero__slide-btn {
-        padding: 10px 28px;
+        padding: 12px 32px;
         font-size: var(--font-size-sm);
     }
 
@@ -1557,9 +1582,9 @@ button {
         right: auto;
         top: auto;
         transform: none;
-        width: 160px;
-        height: 160px;
-        margin: var(--space-sm) auto 0;
+        width: 180px;
+        height: 180px;
+        margin: auto auto 0;
     }
 
     .hero__slide.active .hero__slide-image {
@@ -1603,7 +1628,8 @@ button {
     }
 
     .header__logo img {
-        height: 40px;
+        height: 60px;
+        max-width: 150px;
     }
 
     .section {
@@ -1621,26 +1647,28 @@ button {
     }
 
     .hero__slider {
-        height: 420px;
+        height: 480px;
         border-radius: var(--radius-md);
     }
 
     .hero__slide {
         border-radius: var(--radius-md);
-        padding: var(--space-sm) var(--space-sm) var(--space-xs);
+        padding: var(--space-md) var(--space-sm) var(--space-xs);
     }
 
     .hero__slide-subtitle {
         font-size: var(--font-size-xs);
+        min-height: 50px;
     }
 
     .hero__slide-title {
         font-size: var(--font-size-2xl);
+        min-height: 60px;
     }
 
     .hero__slide-image {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
     }
 
     .hero__dots {
