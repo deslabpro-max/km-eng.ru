@@ -262,28 +262,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // CONTACT FORM — basic validation & feedback
   // ═══════════════════════════════════════════════
 
-  const contactForm = (() => {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
+  // ═══════════════════════════════════════════════
+  // CONTACT FORM — FormSubmit.co handles submission
+  // ═══════════════════════════════════════════════
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+  // const contactForm = (() => {
+  //   const form = document.getElementById('contact-form');
+  //   if (!form) return;
 
-      const btn = form.querySelector('#submit-btn');
-      const originalText = btn.textContent;
-
-      btn.textContent = 'Отправлено ✓';
-      btn.style.background = '#27ae60';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.disabled = false;
-        form.reset();
-      }, 2500);
-    });
-  })();
+  //   // We let FormSubmit.co handle the submission natively.
+  //   // No e.preventDefault() here.
+  // })();
 
 
   // ═══════════════════════════════════════════════
