@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://km-eng.ru/sitemap.xml
