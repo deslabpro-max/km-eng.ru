@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо за заявку! | КМ-ИНЖИНИРИНГ</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=11">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--color-bg);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .thanks-card {
+            background: var(--color-white);
+            padding: 60px 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            max-width: 500px;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .check-icon {
+            width: 80px;
+            height: 80px;
+            background: #e8f5e9;
+            color: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+
+        .check-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: currentColor;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: var(--color-text);
+            margin-bottom: 16px;
+        }
+
+        p {
+            color: var(--color-text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="thanks-card">
+        <div class="check-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+            </svg>
+        </div>
+        <h1>Заявка принята!</h1>
+        <p>Спасибо за обращение. Мы получили вашу информацию и свяжемся с вами в ближайшее время для уточнения деталей
+            проекта.</p>
+        <a href="/" class="btn btn--primary">Вернуться на главную</a>
+    </div>
+
+</body>
+
+</html>
