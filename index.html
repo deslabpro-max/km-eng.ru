@@ -337,12 +337,26 @@
       <div class="contact__inner reveal">
         <h2 class="section-title">Рассчитаем стоимость оборудования под ваш проект</h2>
 
-        <form class="contact__form" id="contact-form" action="#" method="POST">
+        <form class="contact__form" id="contact-form" action="https://formsubmit.co/info@km-eng.ru" method="POST"
+          enctype="multipart/form-data">
+          <!-- Hidden Settings -->
+          <input type="hidden" name="_subject" value="Новая заявка с сайта KM-ENG">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <!-- <input type="hidden" name="_next" value="https://km-eng.ru/thanks.html"> -->
+
           <div class="contact__input-group">
             <input type="text" class="contact__input" name="name" placeholder="Ваше имя" required id="input-name">
             <input type="email" class="contact__input" name="email" placeholder="Email" required id="input-email">
           </div>
           <input type="tel" class="contact__input" name="phone" placeholder="Телефон" id="input-phone">
+
+          <label class="contact__file-label">
+            <span class="contact__file-text">Прикрепить спецификацию или реквизиты (Excel, PDF, Word)</span>
+            <input type="file" name="attachment" class="contact__file-input"
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png">
+          </label>
+
           <textarea class="contact__textarea" name="message" placeholder="Напишите свой запрос на просчет" rows="5"
             id="input-message"></textarea>
           <button type="submit" class="btn btn--primary btn--lg" id="submit-btn">Получить расчет</button>

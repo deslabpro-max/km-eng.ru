@@ -1201,11 +1201,35 @@ button {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     color: var(--color-text);
-    background: var(--color-white);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
     outline: none;
+}
+
+.contact__file-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: var(--space-md);
+    cursor: pointer;
+}
+
+.contact__file-text {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.contact__file-input {
+    width: 100%;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    color: var(--color-text-muted);
 }
 
 .contact__input:focus,
