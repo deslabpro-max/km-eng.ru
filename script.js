@@ -6,6 +6,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // ═══════════════════════════════════════════════
   // HERO SLIDER
   // ═══════════════════════════════════════════════
@@ -50,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dots[current].classList.add('active');
 
       // Progress bar — 4 second timer animation
-      if (progressBar) {
+      if (progressBar && !prefersReducedMotion) {
         progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
         requestAnimationFrame(() => {
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startAutoPlay() {
+      if (prefersReducedMotion || interval) return;
       interval = setInterval(next, INTERVAL_MS);
       // Start initial progress
       if (progressBar) {
@@ -84,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetAutoPlay() {
       clearInterval(interval);
+      interval = null;
       startAutoPlay();
     }
 
@@ -91,9 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pause on hover
     if (slider) {
-      slider.addEventListener('mouseenter', () => clearInterval(interval));
+      slider.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+        interval = null;
+      });
       slider.addEventListener('mouseleave', () => {
-        interval = setInterval(next, INTERVAL_MS);
+        startAutoPlay();
       });
     }
 
@@ -130,6 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
     if (!elements.length) return;
+
+    if (prefersReducedMotion) {
+      elements.forEach(el => el.classList.add('revealed'));
+      return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -283,6 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const separators = document.querySelectorAll('.separator');
     if (!separators.length) return;
 
+    if (prefersReducedMotion) return;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -301,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const parallax = (() => {
     const cta = document.querySelector('.cta');
-    if (!cta) return;
+    if (!cta || prefersReducedMotion) return;
 
     window.addEventListener('scroll', () => {
       const rect = cta.getBoundingClientRect();
@@ -325,8 +339,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentStep = -1;
     let timer = null;
     let isVisible = false;
-    const STEP_DURATION = 2000; // ms per step
-    const PAUSE_BETWEEN = 1200; // pause before restart
+    const STEP_DURATION = 1500; // ms per step
+    const PAUSE_BETWEEN = 700; // pause before restart
+
+    if (prefersReducedMotion) {
+      steps.forEach(step => step.classList.add('wf-done'));
+      return;
+    }
 
     function clearStates() {
       steps.forEach(step => {
